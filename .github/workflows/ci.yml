@@ -1,0 +1,38 @@
+name: CI - Test QUIZ-APP
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🛠 Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🐳 Build and start containers
+        run: |
+          docker compose down || true
+          docker compose build
+          docker compose up -d
+          sleep 10
+
+      - name: 🧪 Test backend
+        run: |
+          echo "➡️ Test backend..."
+          curl -f http://localhost:3000/questions
+
+      - name: 🧪 Test frontend
+        run: |
+          echo "➡️ Test frontend..."
+          curl -f http://localhost:8082
+
+      - name: 🧹 Cleanup
+        run: docker compose down
