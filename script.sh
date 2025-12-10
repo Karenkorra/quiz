@@ -15,7 +15,7 @@ echo "➡️  Démarrage des containers..."
 docker compose up -d
 
 # Patienter le temps que le backend démarre
-sleep 5
+sleep 15
 
 echo "➡️  Test du backend (GET /questions)..."
 curl -f http://localhost:3000/questions > /dev/null

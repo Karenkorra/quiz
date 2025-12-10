@@ -6,7 +6,7 @@ echo "=== 🧪 Test Application ==="
 docker compose up -d || { echo "❌ Impossible de démarrer les containers"; exit 1; }
 
 # Attendre que les services soient prêts
-sleep 5
+sleep 15
 
 # Tester backend
 curl -f http://localhost:3000/questions > /dev/null || { 
