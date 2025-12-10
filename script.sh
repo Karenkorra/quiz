@@ -18,7 +18,7 @@ docker compose up -d
 sleep 15
 
 echo "➡️  Test du backend (GET /questions)..."
-curl -f http://localhost:3000/questions > /dev/null
+curl -f http://backend:3000/questions > /dev/null
 if [ $? -ne 0 ]; then
   echo "❌ Le backend ne répond pas !"
   docker compose down
@@ -27,7 +27,7 @@ fi
 echo "✔️ Backend OK."
 
 echo "➡️  Test du frontend..."
-curl -f http://localhost:8082 > /dev/null
+curl -f http://frontend:8082 > /dev/null
 if [ $? -ne 0 ]; then
   echo "❌ Le frontend ne répond pas !"
   docker compose down
