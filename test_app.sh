@@ -2,7 +2,7 @@
 
 echo "=== 🧪 Test Application ==="
 
-docker compose up -d || { echo "❌ Impossible de démarrer les containers"; exit 1; }
+docker-compose up -d || { echo "❌ Impossible de démarrer les containers"; exit 1; }
 
 sleep 5
 
@@ -14,6 +14,6 @@ echo "✔️ Backend OK"
 curl -f http://localhost:8082 > /dev/null || { echo "❌ Frontend KO"; docker compose down; exit 1; }
 echo "✔️ Frontend OK"
 
-docker compose down
+docker-compose down
 echo "✅ Tous les tests passés"
 

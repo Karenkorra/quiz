@@ -12,13 +12,13 @@ fail() {
 # =========================
 echo "=== 🏗️ Stage Build ==="
 echo "➡️ Stop des containers existants..."
-docker compose stop || true
+docker-compose stop || true
 
 echo "➡️ Suppression des containers existants..."
-docker compose rm -f || true
+docker-compose rm -f || true
 
 echo "➡️ Build des images Docker..."
-docker compose build || fail
+docker-compose build || fail
 
 echo "✅ Build terminé"
 
@@ -27,7 +27,7 @@ echo "✅ Build terminé"
 # =========================
 echo "=== 🧪 Stage Test ==="
 echo "➡️ Démarrage des containers..."
-docker compose up -d || fail
+docker-compose up -d || fail
 
 # Laisser les services démarrer
 sleep 5
@@ -44,6 +44,6 @@ echo "✔️ Frontend OK"
 
 # Nettoyage
 echo "➡️ Arrêt et nettoyage des containers..."
-docker compose down
+docker-compose down
 
 echo "🎉 Pipeline terminé avec succès !"
